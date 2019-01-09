@@ -5,8 +5,9 @@ import matplotlib.pyplot as plt
 image = cv2.imread('Autobahnspur2.jpg')
 gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-sobelx = cv2.Sobel(gray_image, cv2.CV_64F, 0, 1, ksize = 3)
-sobely = cv2.Sobel(gray_image, cv2.CV_64F, 1, 0, ksize = 3)
+sobelx = cv2.Sobel(gray_image, cv2.CV_64F, 1, 0, ksize = 3)
+sobely = cv2.Sobel(gray_image, cv2.CV_64F, 0, 1, ksize = 3)
+sobelall = cv2.Sobel(gray_image, cv2.CV_64F, 1, 1, ksize = 3)
 
 canny = cv2.Canny(gray_image, 128, 255)
 mask = np.zeros_like(canny)
@@ -27,6 +28,7 @@ for line in lines:
 
 cv2.imshow('sobelx', sobelx)
 cv2.imshow('sobely', sobely)
+cv2.imshow('sobelall', sobelall)
 cv2.imshow('canny edge detector', canny)
 cv2.imshow('original with hough lines', image)
 
