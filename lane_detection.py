@@ -25,10 +25,10 @@ for line in lines:
     x1, y1, x2, y2 = line[0]
     cv2.line(image, (x1, y1), (x2, y2), (0, 255, 0), 1)
 
-cv2.imshow('sobelx', sobelx)
-cv2.imshow('sobely', sobely)
-cv2.imshow('canny edge detector', canny)
+plt.imshow(sobelx, cmap='gray')
+plt.imshow(canny, cmap='gray')
 cv2.imshow('original with hough lines', image)
+plt.show()
 
 # wait for any key to be pressed and then close all windows
 cv2.waitKey(0)
