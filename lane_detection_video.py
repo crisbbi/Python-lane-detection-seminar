@@ -3,13 +3,15 @@ import numpy as np
 import matplotlib.pyplot as plt
 import math
 
-video = cv2.VideoCapture("Driving on a windy rural road..mp4")
+video = cv2.VideoCapture("Driving on a windy rural road._first_part.mp4")
 
 while True:
     ret, frame = video.read()
 
-    grayVideo = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-    canny = cv2.Canny(grayVideo, 128, 255)
+    if ret:
+        grayVideo = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        canny = cv2.Canny(grayVideo, 128, 255)
+    else: break
 
     #put mask on canny
     mask = np.zeros_like(canny)
@@ -32,11 +34,6 @@ while True:
             cv2.line(frame, (x1, y1),(x2, y2),(0,255,0),2)
     except:
         pass
-
-    #if not ret:
-    #    video = cv2.VideoCapture("Lane_detectionVideo_beginEndCut.mp4")
-    #    grayVideo = cv2.cvtColor(video, cv2.COLOR_BGR2GRAY)
-    #    continue
 
     #plt.imshow(frame)
     #plt.show()
