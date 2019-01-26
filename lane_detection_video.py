@@ -28,8 +28,8 @@ while True:
             maxOfY = max(y1, y2)
             minOfY = min(y1, y2)
             slope = abs((maxOfY - minOfY) / (maxOfX - minOfX))
-            if slope > 0.15 and slope < math.inf:
-                cv2.line(frame, (x1, y1),(x2, y2),(0,255,0),2)
+            #if slope > 0.15 and slope < math.inf:
+            cv2.line(frame, (x1, y1),(x2, y2),(0,255,0),2)
     except:
         pass
 
