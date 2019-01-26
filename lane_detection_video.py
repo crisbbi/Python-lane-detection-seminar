@@ -3,17 +3,17 @@ import numpy as np
 import matplotlib.pyplot as plt
 import math
 
-video = cv2.VideoCapture("Driving on a windy rural road..mp4")
+video = cv2.VideoCapture("Driving on a windy rural road._first_part.mp4")
 
 while True:
     ret, frame = video.read()
 
     grayVideo = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-    canny = cv2.Canny(grayVideo, 128, 255)
+    canny = cv2.Canny(grayVideo, 80, 255)
 
     #put mask on canny
     mask = np.zeros_like(canny)
-    mask[240: -10, :] = 255
+    mask[240: -15, 15:-8] = 255
     #pointsOfInterest = np.array([frame[:,240:]])
     #cv2.fillPoly(mask, canny[:,240:], 255)
     maskedCanny = cv2.bitwise_and(canny,mask)
