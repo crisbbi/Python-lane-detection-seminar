@@ -15,7 +15,7 @@ while True:
 
     #put mask on canny
     mask = np.zeros_like(canny)
-    mask[240: -10, :] = 255
+    mask[200: -20, 20:-20] = 255
     #pointsOfInterest = np.array([frame[:,240:]])
     #cv2.fillPoly(mask, canny[:,240:], 255)
     maskedCanny = cv2.bitwise_and(canny,mask)
