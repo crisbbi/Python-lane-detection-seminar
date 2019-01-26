@@ -8,8 +8,10 @@ video = cv2.VideoCapture("Driving on a windy rural road._first_part.mp4")
 while True:
     ret, frame = video.read()
 
-    grayVideo = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-    canny = cv2.Canny(grayVideo, 80, 255)
+    if ret:
+        grayVideo = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        canny = cv2.Canny(grayVideo, 60, 255)
+    else: break
 
     #put mask on canny
     mask = np.zeros_like(canny)
