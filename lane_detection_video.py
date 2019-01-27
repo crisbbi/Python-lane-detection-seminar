@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import math
 
-video = cv2.VideoCapture("Lane_detectionVideo_several_road_marks.mp4")
+video = cv2.VideoCapture("Lane_detectionVideo_gap.mp4")
 
 while True:
     ret, frame = video.read()
@@ -15,7 +15,7 @@ while True:
 
     #put mask on canny
     mask = np.zeros_like(canny)
-    pointsOfInterest = np.array([[395,frame.shape[0] - 160],[565,475],[625,475],[775,frame.shape[0] - 160],[620,520],[550,610],[400,610]])
+    pointsOfInterest = np.array([[395,frame.shape[0] - 160],[565,475],[660,475],[810,frame.shape[0] - 160],[620,520],[550,610],[400,610]])
     cv2.fillPoly(mask, [pointsOfInterest], 255)
     maskedCanny = cv2.bitwise_and(canny,mask)
     blurredMaskedCanny = cv2.GaussianBlur(maskedCanny, (5,5),0)
