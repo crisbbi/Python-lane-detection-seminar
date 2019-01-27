@@ -21,7 +21,7 @@ while True:
     blurredMaskedCanny = cv2.GaussianBlur(maskedCanny, (5,5),0)
 
     # hough on masked canny
-    houghLine = cv2.HoughLinesP(blurredMaskedCanny, 1, np.pi/180, 1, np.array([]), 32, 50)
+    houghLine = cv2.HoughLinesP(blurredMaskedCanny, 1, np.pi/180, 1, np.array([]), 50, 50)
     try:
         for x1, y1, x2, y2 in houghLine[0]:
             maxOfX = max(x1, x2)
