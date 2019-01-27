@@ -35,11 +35,6 @@ while True:
     except:
         pass
 
-    #if not ret:
-    #    video = cv2.VideoCapture("Lane_detectionVideo_beginEndCut.mp4")
-    #    grayVideo = cv2.cvtColor(video, cv2.COLOR_BGR2GRAY)
-    #    continue
-
     #plt.imshow(frame)
     #plt.show()
     cv2.imshow("blurry canny", blurredMaskedCanny)
