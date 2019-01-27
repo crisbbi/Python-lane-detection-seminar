@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import math
 
-video = cv2.VideoCapture("Driving on a windy rural road_curves.mp4")
+video = cv2.VideoCapture("Driving on a windy rural road_save_road_faded_marks.mp4")
 
 while True:
     ret, frame = video.read()
