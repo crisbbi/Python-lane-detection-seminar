@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import math
 
-video = cv2.VideoCapture("Lane_detectionVideo_fog.mp4")
+video = cv2.VideoCapture("Lane_detectionVideo_several_road_marks.mp4")
 
 while True:
     ret, frame = video.read()
@@ -15,13 +15,13 @@ while True:
 
     #put mask on canny
     mask = np.zeros_like(canny)
-    pointsOfInterest = np.array([[250,frame.shape[0] - 160],[450,475],[950,475],[1150,frame.shape[0] - 160]])
+    pointsOfInterest = np.array([[395,frame.shape[0] - 160],[565,475],[625,475],[775,frame.shape[0] - 160],[620,520],[550,610],[400,610]])
     cv2.fillPoly(mask, [pointsOfInterest], 255)
     maskedCanny = cv2.bitwise_and(canny,mask)
     blurredMaskedCanny = cv2.GaussianBlur(maskedCanny, (5,5),0)
 
     # hough on masked canny
-    houghLine = cv2.HoughLinesP(blurredMaskedCanny, 1, np.pi/180, 1, np.array([]), 50, 50)
+    houghLine = cv2.HoughLinesP(blurredMaskedCanny, 1, np.pi/180, 1, np.array([]), 75, 100)
     try:
         for x1, y1, x2, y2 in houghLine[0]:
             maxOfX = max(x1, x2)
