@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import math
 
-video = cv2.VideoCapture("Lane_detectionVideo_dark_city.mp4")
+video = cv2.VideoCapture("Lane_detectionVideo_dark_city2.mp4")
 
 while True:
     ret, frame = video.read()
@@ -15,7 +15,7 @@ while True:
 
     #put mask on canny
     mask = np.zeros_like(canny)
-    pointsOfInterest = np.array([[300,frame.shape[0] - 160],[505,475],[720,475],[870,frame.shape[0] - 160],[620,520],[550,610],[400,610]])
+    pointsOfInterest = np.array([[300,frame.shape[0] - 160],[520,485],[720,475],[870,frame.shape[0] - 160]])
     cv2.fillPoly(mask, [pointsOfInterest], 255)
     maskedCanny = cv2.bitwise_and(canny,mask)
     blurredMaskedCanny = cv2.GaussianBlur(maskedCanny, (5,5),0)
